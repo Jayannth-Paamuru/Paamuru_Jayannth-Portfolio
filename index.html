@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paamuru Jayannth — Software Developer & Data Analyst</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+
+  <style>
+    /* ─── CSS VARIABLES (Cool Earth Tones) ──────────────────── */
+    :root {
+      /* ── DARK (default) — Deep Slate + Sage Green + Teal ── */
+      --bg:        #15191c;
+      --bg2:       #1e2428;
+      --surface:   #272e33;
+      --border:    #3a444b;
+      --txt:       #e8ecef;
+      --txt2:      #a3b0b8;
+      --accent:    #4fa684; /* Muted Sage/Teal */
+      --accent2:   #3b8266;
+      --cream:     #dce4df;
+      --terracotta:#355e5b; /* Repurposed to cool slate-green */
+      --sienna:    #223a3e; /* Repurposed to deep cyan-slate */
+      --sand:      #688a7e; /* Repurposed to muted sage */
+      --nav-h:     68px;
+      --radius:    14px;
+      --shadow:    0 4px 28px rgba(0,0,0,.45);
+      --transition: .35s cubic-bezier(.4,0,.2,1);
+    }
+    [data-theme="light"] {
+      --bg:        #f4f6f5;
+      --bg2:       #e9eceb;
+      --surface:   #ffffff;
+      --border:    #dce0de;
+      --txt:       #272e33;
+      --txt2:      #5c6b73;
+      --accent:    #3b8266;
+      --accent2:   #4fa684;
+      --cream:     #f4f6f5;
+      --sand:      #688a7e;
+      --shadow:    0 4px 28px rgba(0,0,0,.08);
+    }
+
+    /* ─── BASE ───────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--txt);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      transition: background var(--transition), color var(--transition);
+      overflow-x: hidden;
+    }
+    h1,h2,h3,h4,h5 { font-family: 'Syne', sans-serif; line-height: 1.15; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
+    section { padding: 96px 0; }
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--txt);
+      margin-bottom: 18px;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--txt2);
+      max-width: 540px;
+    }
+    .divider {
+      width: 48px; height: 3px;
+      background: var(--accent);
+      border-radius: 99px;
+      margin: 18px 0 40px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 99px;
+      font-size: .78rem;
+      font-weight: 600;
+      background: color-mix(in srgb, var(--accent) 14%, transparent);
+      color: var(--accent);
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+    }
+
+    /* ─── DECORATIVE BACKGROUND PATTERN (Tech/Data Vibe) ─────── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      /* Soft radial glows + SVG grid with data/code motifs */
+      background-image:
+        radial-gradient(ellipse 800px 600px at 80% 10%, rgba(79, 166, 132, .06) 0%, transparent 60%),
+        radial-gradient(ellipse 600px 500px at 10% 80%, rgba(53, 94, 91, .07) 0%, transparent 55%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect width='120' height='120' fill='none'/%3E%3C!-- grid dots --%3E%3Ccircle cx='0' cy='0' r='1' fill='%234fa684' opacity='.06'/%3E%3Ccircle cx='60' cy='0' r='1' fill='%234fa684' opacity='.06'/%3E%3Ccircle cx='120' cy='0' r='1' fill='%234fa684' opacity='.06'/%3E%3Ccircle cx='0' cy='60' r='1' fill='%234fa684' opacity='.06'/%3E%3Ccircle cx='60' cy='60' r='1' fill='%234fa684' opacity='.06'/%3E%3Ccircle cx='120' cy='60' r='1' fill='%234fa684' opacity='.06'/%3E%3Ccircle cx='0' cy='120' r='1' fill='%234fa684' opacity='.06'/%3E%3Ccircle cx='60' cy='120' r='1' fill='%234fa684' opacity='.06'/%3E%3Ccircle cx='120' cy='120' r='1' fill='%234fa684' opacity='.06'/%3E%3C!-- bar chart mini icon --%3E%3Crect x='8' y='44' width='4' height='12' rx='1' fill='%234fa684' opacity='.04'/%3E%3Crect x='14' y='38' width='4' height='18' rx='1' fill='%234fa684' opacity='.04'/%3E%3Crect x='20' y='42' width='4' height='14' rx='1' fill='%234fa684' opacity='.04'/%3E%3C!-- code brackets --%3E%3Ctext x='72' y='52' font-family='monospace' font-size='10' fill='%23688a7e' opacity='.05'%3E%7B%7D%3C/text%3E%3Ctext x='80' y='100' font-family='monospace' font-size='8' fill='%23688a7e' opacity='.05'%3E%3C/%3E%3C/text%3E%3C/svg%3E");
+      background-size: auto, auto, 120px 120px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    body > * { position: relative; z-index: 1; }
+    #mainNav { z-index: 1000 !important; }
+    #scrollTop { z-index: 999 !important; }
+
+    /* ─── NAVBAR ─────────────────────────────────────────────── */
+    #mainNav {
+      height: var(--nav-h);
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition), border var(--transition);
+      z-index: 1000;
+    }
+    .navbar-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--txt) !important;
+      letter-spacing: .02em;
+    }
+    .navbar-brand span { color: var(--accent); }
+    .nav-link {
+      font-size: .88rem;
+      font-weight: 500;
+      color: var(--txt2) !important;
+      padding: 6px 14px !important;
+      border-radius: 8px;
+      transition: color var(--transition), background var(--transition);
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--txt) !important;
+      background: var(--bg2);
+    }
+    .navbar-toggler { border: 1px solid var(--border); }
+    .navbar-toggler-icon { filter: invert(0.4); }
+    [data-theme="dark"] .navbar-toggler-icon { filter: invert(0.8); }
+
+    /* Theme toggle */
+    #themeToggle {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--txt2);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition);
+      font-size: 1rem;
+    }
+    #themeToggle:hover { background: var(--bg2); color: var(--accent); }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(90px);
+      opacity: .2;
+    }
+    .hero-bg-circle.c1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, var(--accent) 0%, var(--terracotta) 60%, transparent 100%);
+      top: -160px; right: -140px;
+    }
+    .hero-bg-circle.c2 {
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, var(--sienna) 0%, var(--accent2) 60%, transparent 100%);
+      bottom: -60px; left: -100px;
+    }
+    .hero-available {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 16px;
+      border-radius: 99px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--txt2);
+      margin-bottom: 28px;
+      box-shadow: var(--shadow);
+    }
+    .hero-available .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .5; transform: scale(1.4); }
+    }
+    .hero-headline {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -.02em;
+      color: var(--txt);
+      margin-bottom: 18px;
+    }
+    .hero-headline .accent-word { color: var(--accent); }
+    .hero-tagline {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-weight: 300;
+      color: var(--txt2);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--txt2);
+      max-width: 500px;
+      margin-bottom: 42px;
+    }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn-primary-custom {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: .92rem;
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition);
+      box-shadow: 0 4px 18px color-mix(in srgb, var(--accent) 40%, transparent);
+    }
+    .btn-primary-custom:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px color-mix(in srgb, var(--accent) 50%, transparent);
+      background: var(--accent2);
+      color: #fff;
+    }
+    .btn-outline-custom {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 26px;
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--txt);
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: .92rem;
+      border: 1.5px solid var(--border);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .btn-outline-custom:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .hero-avatar-wrap {
+      position: relative;
+      display: flex; justify-content: center; align-items: center;
+    }
+    .hero-avatar-ring {
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      border: 2px dashed color-mix(in srgb, var(--accent) 35%, transparent);
+      position: absolute;
+      animation: spin-slow 20s linear infinite;
+    }
+    @keyframes spin-slow { to { transform: rotate(360deg); } }
+    .hero-avatar {
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--terracotta) 50%, var(--sienna) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--cream);
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 0 4px var(--surface), 0 20px 60px rgba(79, 166, 132, .25), 0 0 80px rgba(79, 166, 132, .1);
+    }
+
+    /* ─── ABOUT ──────────────────────────────────────────────── */
+    #about { background: var(--bg2); }
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: var(--shadow);
+      transition: background var(--transition), border var(--transition);
+    }
+    .about-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+    .info-item { display: flex; flex-direction: column; gap: 3px; }
+    .info-item .lbl { font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--txt2); font-weight: 600; }
+    .info-item .val { font-weight: 500; font-size: .95rem; color: var(--txt); }
+    .about-highlight {
+      background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 14px 20px;
+      margin: 24px 0;
+      font-size: .95rem;
+      color: var(--txt2);
+      font-style: italic;
+    }
+
+    /* ─── SKILLS ─────────────────────────────────────────────── */
+    #skills { background: var(--bg); }
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow var(--transition), transform var(--transition), background var(--transition);
+    }
+    .skill-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+    .skill-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .skill-name { font-weight: 600; font-size: .95rem; display: flex; align-items: center; gap: 10px; }
+    .skill-icon { font-size: 1.1rem; }
+    .skill-level-badge {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 99px;
+    }
+    .level-beginner { background: #dbeafe; color: #1e40af; }
+    .level-intermediate { background: #fef3c7; color: #92400e; }
+    .level-expert { background: #dcfce7; color: #166534; }
+    [data-theme="dark"] .level-beginner { background: #1e3a5f; color: #93c5fd; }
+    [data-theme="dark"] .level-intermediate { background: #452403; color: #fcd34d; }
+    [data-theme="dark"] .level-expert { background: #06402b; color: #6ee7b7; }
+    
+    .skill-bar-track {
+      height: 6px;
+      background: var(--bg2);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      width: 0;
+      transition: width 1.2s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ─── PROJECTS ───────────────────────────────────────────── */
+    #projects { background: var(--bg2); }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: box-shadow var(--transition), transform var(--transition), background var(--transition);
+      height: 100%;
+    }
+    .project-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,.12); transform: translateY(-4px); }
+    .project-img {
+      height: 200px;
+      background: linear-gradient(135deg, var(--bg2), var(--border));
+      position: relative;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .project-img-placeholder {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      color: var(--txt2);
+      opacity: .5;
+    }
+    .project-img-placeholder i { font-size: 2.5rem; }
+    .project-img-placeholder span { font-size: .78rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
+    .project-img-accent {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 15%, transparent) 0%, transparent 60%);
+    }
+    .project-body { padding: 24px; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .project-tag {
+      font-size: .7rem; font-weight: 600;
+      padding: 3px 10px; border-radius: 99px;
+      background: var(--bg2);
+      color: var(--txt2);
+      border: 1px solid var(--border);
+    }
+    .project-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+    .project-desc { font-size: .88rem; color: var(--txt2); line-height: 1.6; margin-bottom: 18px; }
+    .project-links { display: flex; gap: 12px; }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .8rem; font-weight: 600;
+      color: var(--accent);
+      transition: gap var(--transition);
+    }
+    .project-link:hover { gap: 10px; }
+
+    /* ─── EXPERIENCE ─────────────────────────────────────────── */
+    #experience { background: var(--bg); }
+    .timeline { position: relative; padding-left: 36px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+    .timeline-item { position: relative; margin-bottom: 44px; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -32px; top: 6px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .timeline-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      transition: background var(--transition), border var(--transition), box-shadow var(--transition);
+    }
+    .timeline-card:hover { box-shadow: var(--shadow); }
+    .timeline-period {
+      font-size: .72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .12em; color: var(--accent); margin-bottom: 4px;
+    }
+    .timeline-role { font-size: 1.1rem; font-weight: 700; margin-bottom: 2px; }
+    .timeline-company { font-size: .9rem; color: var(--txt2); margin-bottom: 14px; }
+    .timeline-desc { font-size: .9rem; color: var(--txt2); }
+    .timeline-desc li { margin-bottom: 6px; }
+
+    /* ─── RESUME ─────────────────────────────────────────────── */
+    #resume { background: var(--bg2); }
+    .resume-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 44px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .resume-icon {
+      width: 72px; height: 72px;
+      border-radius: 18px;
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; color: var(--accent);
+      margin: 0 auto 22px;
+    }
+    .resume-btn-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+
+    /* ─── CONTACT ────────────────────────────────────────────── */
+    #contact { background: var(--bg); }
+    .contact-form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+    }
+    .form-label { font-weight: 500; font-size: .88rem; color: var(--txt2); margin-bottom: 6px; }
+    .form-control, .form-select {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      color: var(--txt);
+      padding: 11px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .92rem;
+      transition: border var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+    .form-control:focus, .form-select:focus {
+      background: var(--surface);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+      color: var(--txt);
+    }
+    .form-control::placeholder { color: var(--txt2); opacity: .6; }
+    textarea.form-control { resize: none; }
+    .contact-info-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 14px;
+      transition: box-shadow var(--transition), background var(--transition);
+    }
+    .contact-info-item:hover { box-shadow: var(--shadow); }
+    .contact-info-icon {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-info-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--txt2); margin-bottom: 2px; }
+    .contact-info-val { font-weight: 500; font-size: .92rem; }
+    .social-links { display: flex; gap: 12px; margin-top: 24px; }
+    .social-link {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.05rem;
+      color: var(--txt2);
+      transition: all var(--transition);
+    }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      text-align: center;
+      font-size: .84rem;
+      color: var(--txt2);
+    }
+    footer span { color: var(--accent); }
+
+    /* ─── SCROLL TOP ─────────────────────────────────────────── */
+    #scrollTop {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.05rem;
+      box-shadow: 0 4px 16px color-mix(in srgb, var(--accent) 40%, transparent);
+      opacity: 0; transform: translateY(16px);
+      transition: opacity var(--transition), transform var(--transition);
+      z-index: 999;
+    }
+    #scrollTop.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 767px) {
+      section { padding: 64px 0; }
+      .hero-headline { font-size: 2.5rem; }
+      .hero-avatar { width: 200px; height: 200px; font-size: 3rem; }
+      .hero-avatar-ring { width: 240px; height: 240px; }
+      .stat-badge { display: none; }
+      .about-info-grid { grid-template-columns: 1fr; }
+      .resume-card { padding: 28px 20px; }
+      .contact-form-card { padding: 24px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="#hero">PJ<span>.</span></a>
+    <div class="d-flex align-items-center gap-2 order-lg-last">
+      <button id="themeToggle" title="Toggle theme">
+        <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+      </button>
+      <button class="navbar-toggler ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg-circle c1"></div>
+  <div class="hero-bg-circle c2"></div>
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-7 fade-up">
+        <div class="hero-available">
+          <div class="dot"></div>
+          Available for opportunities
+        </div>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:99px;font-size:.78rem;font-weight:700;background:color-mix(in srgb,var(--accent) 18%,transparent);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);font-family:'Syne',sans-serif;letter-spacing:.04em;">
+            <i class="bi bi-code-slash"></i> Software Developer
+          </span>
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:99px;font-size:.78rem;font-weight:700;background:color-mix(in srgb,var(--sand) 18%,transparent);color:var(--sand);border:1px solid color-mix(in srgb,var(--sand) 30%,transparent);font-family:'Syne',sans-serif;letter-spacing:.04em;">
+            <i class="bi bi-bar-chart-line"></i> Data Analyst
+          </span>
+        </div>
+        <h1 class="hero-headline">
+          Logic.<br>
+          <span class="accent-word">Context.</span><br>
+          Clarity.
+        </h1>
+        <p class="hero-tagline">Empowering decisions through data. Building solutions through code.</p>
+        <p class="hero-desc">
+          Hi, I'm <strong>Paamuru Jayannth</strong>. I am a Software Developer and Data Analyst who loves taking a project from raw data and blank screens to fully functional, insightful applications.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn-primary-custom">
+            View My Work <i class="bi bi-arrow-right"></i>
+          </a>
+          <a href="#contact" class="btn-outline-custom">
+            Get In Touch <i class="bi bi-chat-dots"></i>
+          </a>
+        </div>
+        <div class="d-flex align-items-center gap-3 mt-4">
+          <span style="font-size:.75rem;color:var(--txt2);font-weight:500;text-transform:uppercase;letter-spacing:.1em;">Find me on</span>
+          <a href="https://www.linkedin.com/in/paamuru-jayannth" target="_blank"
+             style="display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);color:var(--txt2);font-size:.82rem;font-weight:600;transition:all .3s ease;"
+             onmouseover="this.style.borderColor='#0a66c2';this.style.color='#0a66c2';"
+             onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--txt2)';">
+            <i class="bi bi-linkedin" style="font-size:1rem;"></i> LinkedIn
+          </a>
+          <a href="https://github.com/Jayannth-Paamuru" target="_blank"
+             style="display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);color:var(--txt2);font-size:.82rem;font-weight:600;transition:all .3s ease;"
+             onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)';"
+             onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--txt2)';">
+            <i class="bi bi-github" style="font-size:1rem;"></i> GitHub
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-5 d-flex justify-content-center fade-up">
+        <div class="hero-avatar-wrap">
+          <div class="hero-avatar-ring"></div>
+          <div class="hero-avatar">PJ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="row gy-5 align-items-start">
+      <div class="col-lg-5 fade-up">
+        <p class="section-label">About Me</p>
+        <h2 class="section-title">The developer behind the code</h2>
+        <div class="divider"></div>
+        <p style="color:var(--txt2); font-size:.97rem; margin-bottom:16px;">
+          I'm an aspiring software developer with a strong foundation in AI &amp; Data Science.
+          I enjoy building practical solutions that combine intelligent algorithms with clean,
+          user-friendly interfaces.
+        </p>
+        <div class="about-highlight">
+          "I believe the best software is built at the intersection of data intelligence and thoughtful engineering."
+        </div>
+        <p style="color:var(--txt2); font-size:.95rem;">
+          When I'm not coding, you'll find me browsing the latest tech, exploring open-source projects,
+          watching movies, or listening to music.
+        </p>
+        <div class="mt-4 d-flex flex-wrap gap-2">
+          <span class="pill"><i class="bi bi-code-slash me-1"></i>Software Developer</span>
+          <span class="pill"><i class="bi bi-bar-chart-line me-1"></i>Data Analyst</span>
+          <span class="pill"><i class="bi bi-robot me-1"></i>AI & ML</span>
+          <span class="pill"><i class="bi bi-stack me-1"></i>Full-Stack Dev</span>
+        </div>
+      </div>
+      <div class="col-lg-7 fade-up">
+        <div class="about-card">
+          <h4 style="font-size:1rem; font-weight:700; margin-bottom:20px;">Quick Info</h4>
+          <div class="about-info-grid">
+            <div class="info-item">
+              <span class="lbl">Full Name</span>
+              <span class="val">Paamuru Jayannth</span>
+            </div>
+            <div class="info-item">
+              <span class="lbl">Location</span>
+              <span class="val">Nandalur, Andhra Pradesh</span>
+            </div>
+            <div class="info-item">
+              <span class="lbl">Degree</span>
+              <span class="val">B.Tech, AI & Data Science</span>
+            </div>
+            <div class="info-item">
+              <span class="lbl">College</span>
+              <span class="val">AITS, 2020–2024</span>
+            </div>
+            <div class="info-item">
+              <span class="lbl">Freelance</span>
+              <span class="val" style="color:#22c55e; font-weight:600;">Available</span>
+            </div>
+            <div class="info-item">
+              <span class="lbl">Languages</span>
+              <span class="val">Telugu, English</span>
+            </div>
+          </div>
+          <hr style="border-color:var(--border); margin:22px 0 18px;">
+          <p style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--txt2);margin-bottom:12px;">Connect with me</p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="https://www.linkedin.com/in/paamuru-jayannth" target="_blank"
+               style="display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg);color:var(--txt2);font-size:.82rem;font-weight:600;text-decoration:none;transition:all .3s ease;"
+               onmouseover="this.style.borderColor='#0a66c2';this.style.color='#0a66c2';this.style.background='rgba(10,102,194,.08)';"
+               onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--txt2)';this.style.background='var(--bg)';">
+              <i class="bi bi-linkedin"></i> linkedin.com/in/paamuru-jayannth
+            </a>
+            <a href="https://github.com/Jayannth-Paamuru" target="_blank"
+               style="display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg);color:var(--txt2);font-size:.82rem;font-weight:600;text-decoration:none;transition:all .3s ease;"
+               onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)';this.style.background='rgba(79, 166, 132,.08)';"
+               onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--txt2)';this.style.background='var(--bg)';">
+              <i class="bi bi-github"></i> github.com/Jayannth-Paamuru
+            </a>
+          </div>
+          <hr style="border-color:var(--border); margin:18px 0 20px;">
+          <div class="row text-center gy-3">
+            <div class="col-4">
+              <div style="font-family:'Syne',sans-serif; font-size:2rem; font-weight:800; color:var(--accent);">5+</div>
+              <div style="font-size:.78rem; color:var(--txt2); font-weight:500;">Projects Done</div>
+            </div>
+            <div class="col-4">
+              <div style="font-family:'Syne',sans-serif; font-size:2rem; font-weight:800; color:var(--accent);">5</div>
+              <div style="font-size:.78rem; color:var(--txt2); font-weight:500;">Internships</div>
+            </div>
+            <div class="col-4">
+              <div style="font-family:'Syne',sans-serif; font-size:2rem; font-weight:800; color:var(--accent);">1+</div>
+              <div style="font-size:.78rem; color:var(--txt2); font-weight:500;">Years work Exp.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="row mb-5 fade-up">
+      <div class="col-lg-6">
+        <p class="section-label">Skills & Expertise</p>
+        <h2 class="section-title">Technical Proficiency</h2>
+        <div class="divider"></div>
+        <p class="section-sub">A well-rounded toolkit spanning frontend, backend, databases, and developer tools.</p>
+      </div>
+    </div>
+    <div class="row gy-3">
+
+      <div class="col-12 fade-up">
+        <p style="font-family:'Syne',sans-serif; font-size:.8rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--txt2); margin-bottom:14px;">
+          <i class="bi bi-code-slash me-2" style="color:var(--accent)"></i>Programming Languages
+        </p>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-card">
+          <div class="skill-head">
+            <div class="skill-name"><span class="skill-icon">🐍</span> Python</div>
+            <span class="skill-level-badge level-intermediate">Intermediate</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-card">
+          <div class="skill-head">
+            <div class="skill-name"><span class="skill-icon">☕</span> Java</div>
+            <span class="skill-level-badge level-intermediate">Intermediate</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="68"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-card">
+          <div class="skill-head">
+            <div class="skill-name"><span class="skill-icon">🔷</span> C#</div>
+            <span class="skill-level-badge level-intermediate">Intermediate</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div>
+        </div>
+      </div>
+
+      <div class="col-12 fade-up" style="margin-top:12px;">
+        <p style="font-family:'Syne',sans-serif; font-size:.8rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--txt2); margin-bottom:14px;">
+          <i class="bi bi-layout-text-window me-2" style="color:var(--accent)"></i>Web Technologies
+        </p>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-card">
+          <div class="skill-head">
+            <div class="skill-name"><span class="skill-icon">🌐</span> HTML & CSS</div>
+            <span class="skill-level-badge level-intermediate">Intermediate</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-card">
+          <div class="skill-head">
+            <div class="skill-name"><span class="skill-icon">🅱️</span> Bootstrap 5</div>
+            <span class="skill-level-badge level-intermediate">Intermediate</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-card">
+          <div class="skill-head">
+            <div class="skill-name"><span class="skill-icon">🔺</span> Angular</div>
+            <span class="skill-level-badge level-intermediate">Intermediate</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div>
+        </div>
+      </div>
+
+      <div class="col-12 fade-up" style="margin-top:12px;">
+        <p style="font-family:'Syne',sans-serif; font-size:.8rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--txt2); margin-bottom:14px;">
+          <i class="bi bi-gear me-2" style="color:var(--accent)"></i>Frameworks
+        </p>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-card">
+          <div class="skill-head">
+            <div class="skill-name"><span class="skill-icon">🌿</span> Django</div>
+            <span class="skill-level-badge level-intermediate">Intermediate</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="72"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-card">
+          <div class="skill-head">
+            <div class="skill-name"><span class="skill-icon">🔷</span> ASP.NET MVC</div>
+            <span class="skill-level-badge level-intermediate">Intermediate</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div>
+        </div>
+      </div>
+
+      <div class="col-12 fade-up" style="margin-top:12px;">
+        <p style="font-family:'Syne',sans-serif; font-size:.8rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--txt2); margin-bottom:14px;">
+          <i class="bi bi-cpu me-2" style="color:var(--accent)"></i>AI, ML & Data Science
+        </p>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-card">
+          <div class="skill-head">
+            <div class="skill-name"><span class="skill-icon">🧠</span> Machine Learning</div>
+            <span class="skill-level-badge level-intermediate">Intermediate</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-card">
+          <div class="skill-head">
+            <div class="skill-name"><span class="skill-icon">🔬</span> Deep Learning / CNN</div>
+            <span class="skill-level-badge level-intermediate">Intermediate</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="68"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-card">
+          <div class="skill-head">
+            <div class="skill-name"><span class="skill-icon">📊</span> MS Power BI</div>
+            <span class="skill-level-badge level-intermediate">Intermediate</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div>
+        </div>
+      </div>
+
+      <div class="col-12 fade-up" style="margin-top:12px;">
+        <p style="font-family:'Syne',sans-serif; font-size:.8rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--txt2); margin-bottom:14px;">
+          <i class="bi bi-database me-2" style="color:var(--accent)"></i>Databases
+        </p>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-card">
+          <div class="skill-head">
+            <div class="skill-name"><span class="skill-icon">🐬</span> MySQL</div>
+            <span class="skill-level-badge level-expert">Expert</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-card">
+          <div class="skill-head">
+            <div class="skill-name"><span class="skill-icon">🗄️</span> SQL Server</div>
+            <span class="skill-level-badge level-expert">Expert</span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="row mb-5 fade-up">
+      <div class="col-lg-6">
+        <p class="section-label">My Work</p>
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="divider"></div>
+        <p class="section-sub">A selection of projects that showcase my skills and passion for building great products.</p>
+      </div>
+    </div>
+    <div class="row gy-4">
+
+      <div class="col-md-6 col-lg-6 fade-up">
+        <div class="project-card">
+          <div class="project-img" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0);">
+            <div class="project-img-accent"></div>
+            <div class="project-img-placeholder">
+              <i class="bi bi-feather"></i>
+              <span>Project Image</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">CNN</span>
+              <span class="project-tag">EfficientNet B3</span>
+              <span class="project-tag">Deep Learning</span>
+            </div>
+            <h3 class="project-title">Bird Species Classification & Endangered Species Identification</h3>
+            <p class="project-desc">Developed a CNN-based deep learning model with EfficientNet B3 to classify 270 bird species using 84,000+ images. Incorporated metadata for filtering and endangered species identification to support conservation efforts.</p>
+            <div class="project-links">
+              <a href="https://github.com/Jayannth-Paamuru" class="project-link" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-6 fade-up">
+        <div class="project-card">
+          <div class="project-img" style="background:linear-gradient(135deg,#fef9c3,#fde68a);">
+            <div class="project-img-accent"></div>
+            <div class="project-img-placeholder">
+              <i class="bi bi-heart-pulse"></i>
+              <span>Project Image</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">SVM Algorithm</span>
+              <span class="project-tag">Machine Learning</span>
+            </div>
+            <h3 class="project-title">Prediction of Diabetes</h3>
+            <p class="project-desc">Developed an SVM-based machine learning model for early diabetes prediction using real-world healthcare data. Aims to support preventive care through accurate risk assessment and lifestyle recommendations.</p>
+            <div class="project-links">
+              <a href="https://github.com/Jayannth-Paamuru" class="project-link" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-6 fade-up">
+        <div class="project-card">
+          <div class="project-img" style="background:linear-gradient(135deg,#ffe4e6,#fecdd3);">
+            <div class="project-img-accent"></div>
+            <div class="project-img-placeholder">
+              <i class="bi bi-cart3"></i>
+              <span>Project Image</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="project-tag">Angular</span>
+              <span class="project-tag">Bootstrap 5</span>
+              <span class="project-tag">JSON</span>
+            </div>
+            <h3 class="project-title">Pizza Cart — Angular E-Commerce</h3>
+            <p class="project-desc">An Angular-based pizza ordering app with JSON-based user store and session monitoring for secure login, logout, and registration. Only logged-in users access the buy page; Bootstrap-styled query parameters pass product details.</p>
+            <div class="project-links">
+              <a href="https://github.com/Jayannth-Paamuru" class="project-link" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-6 fade-up">
+        <div class="project-card">
+          <div class="project-img" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd);">
+            <div class="project-img-accent"></div>
+            <div class="project-img-placeholder">
+              <i class="bi bi-journal-bookmark"></i>
+              <span>Project Image</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="project-tag">C#</span>
+              <span class="project-tag">ASP.NET MVC</span>
+              <span class="project-tag">Bootstrap</span>
+              <span class="project-tag">SQL Server</span>
+            </div>
+            <h3 class="project-title">Library Management System</h3>
+            <p class="project-desc">ASP.NET MVC Library Management System with secure redirection, session management, and user authentication. Includes a rental tracking module with automated due date monitoring and fine calculation using SQL Server.</p>
+            <div class="project-links">
+              <a href="https://github.com/Jayannth-Paamuru" class="project-link" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <div class="row mb-5 fade-up">
+      <div class="col-lg-6">
+        <p class="section-label">Career Journey</p>
+        <h2 class="section-title">Work Experience</h2>
+        <div class="divider"></div>
+        <p class="section-sub">A timeline of my professional journey and the impact I've made along the way.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 fade-up">
+        <div class="timeline">
+
+          <!-- <div class="timeline-item">
+            <div class="timeline-card" style="border:2px dashed var(--border); background:color-mix(in srgb,var(--accent) 4%,var(--surface));">
+              <div class="timeline-period" style="color:var(--txt2);">Work Experience</div>
+              <div class="timeline-role" style="color:var(--txt2);">To Be Added</div>
+              <div class="timeline-company"><i class="bi bi-clock me-1"></i>Details coming soon</div>
+              <p class="timeline-desc" style="font-style:italic; opacity:.7;">Work experience will be updated here shortly.</p>
+            </div>
+          </div> -->
+
+          <div class="timeline-item">
+            <div class="timeline-card" style="border-left: 3px solid var(--accent);">
+            <div class="timeline-period">Mar 2025 — Present</div>
+            <div class="timeline-role">Associate Software Developer</div>
+            <div class="timeline-company"><i class="bi bi-building me-1"></i>Mphasis | Project: CBRE AMS</div>
+              <ul class="timeline-desc ps-3">
+                <li>Manage and maintain 3 core enterprise applications, focusing on rapid issue resolution and codebase optimization.</li>
+                <li>Develop and integrate new business features using <strong>React</strong> and <strong>Express.js</strong>.</li>
+                <li>Handle secure user authentication with <strong>Passport.js</strong> and manage data via <strong>CouchDB</strong> and <strong>AWS S3</strong>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-card">
+              <div class="timeline-period">Nov 2024 — Apr 2025</div>
+              <div class="timeline-role">Data Analytics Intern</div>
+              <div class="timeline-company"><i class="bi bi-building me-1"></i>Digital Lync</div>
+              <ul class="timeline-desc ps-3">
+                <li>Worked on data wrangling, visualization, and reporting using MS Power BI and Python.</li>
+                <li>Built interactive dashboards for business metrics and insights.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-card">
+              <div class="timeline-period">Feb 2024 — Sep 2024</div>
+              <div class="timeline-role">Python Full Stack Trainee Engineer</div>
+              <div class="timeline-company"><i class="bi bi-building me-1"></i>Palle Technologies</div>
+              <ul class="timeline-desc ps-3">
+                <li>Built full-stack web applications using Python (Django) with HTML, CSS, and Bootstrap 5.</li>
+                <li>Gained hands-on experience with database design using MySQL and SQL Server.</li>
+                <li>Completed and deployed multiple internal projects including the Library Management System.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-card">
+              <div class="timeline-period">Feb 2024 — Mar 2024</div>
+              <div class="timeline-role">AI & Machine Learning Intern</div>
+              <div class="timeline-company"><i class="bi bi-building me-1"></i>PanTech Solutions</div>
+              <ul class="timeline-desc ps-3">
+                <li>Explored advanced AI/ML techniques including neural networks and model evaluation.</li>
+                <li>Applied learning to a CNN-based bird species classification project.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-card">
+              <div class="timeline-period">Mar 2023 — May 2023</div>
+              <div class="timeline-role">Full Stack Development Intern</div>
+              <div class="timeline-company"><i class="bi bi-building me-1"></i>Industry Training Program</div>
+              <ul class="timeline-desc ps-3">
+                <li>Developed an Angular-based e-commerce pizza ordering app with session-based authentication.</li>
+                <li>Implemented Bootstrap 5 UI with query-parameter-driven product navigation.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-card">
+              <div class="timeline-period">Mar 2022 — Aug 2022</div>
+              <div class="timeline-role">Data Science Intern</div>
+              <div class="timeline-company"><i class="bi bi-building me-1"></i>Industry Training Program</div>
+              <ul class="timeline-desc ps-3">
+                <li>Worked with real-world datasets for data cleaning, EDA, and predictive modelling.</li>
+                <li>Built an SVM-based diabetes prediction model using Python and scikit-learn.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 fade-up">
+        <div class="about-card h-auto" style="position:sticky; top:calc(var(--nav-h) + 20px);">
+          <h5 style="font-size:.95rem; font-weight:700; margin-bottom:20px;">Certifications</h5>
+          <div class="d-flex flex-column gap-3">
+            <div style="display:flex; gap:14px; align-items:flex-start;">
+              <div style="width:36px; height:36px; border-radius:9px; background:color-mix(in srgb,var(--accent) 12%,transparent); color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:.9rem; flex-shrink:0;"><i class="bi bi-award"></i></div>
+              <div>
+                <div style="font-weight:600; font-size:.88rem;">Python Full Stack</div>
+                <div style="font-size:.78rem; color:var(--txt2);">Palle Technologies</div>
+              </div>
+            </div>
+            <div style="display:flex; gap:14px; align-items:flex-start;">
+              <div style="width:36px; height:36px; border-radius:9px; background:color-mix(in srgb,var(--accent) 12%,transparent); color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:.9rem; flex-shrink:0;"><i class="bi bi-award"></i></div>
+              <div>
+                <div style="font-weight:600; font-size:.88rem;">Data Analytics</div>
+                <div style="font-size:.78rem; color:var(--txt2);">Digital Lync</div>
+              </div>
+            </div>
+            <div style="display:flex; gap:14px; align-items:flex-start;">
+              <div style="width:36px; height:36px; border-radius:9px; background:color-mix(in srgb,var(--accent) 12%,transparent); color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:.9rem; flex-shrink:0;"><i class="bi bi-award"></i></div>
+              <div>
+                <div style="font-weight:600; font-size:.88rem;">Java Full Stack Development</div>
+                <div style="font-size:.78rem; color:var(--txt2);">Digital Skills Readiness Program</div>
+              </div>
+            </div>
+            <div style="display:flex; gap:14px; align-items:flex-start;">
+              <div style="width:36px; height:36px; border-radius:9px; background:color-mix(in srgb,var(--accent) 12%,transparent); color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:.9rem; flex-shrink:0;"><i class="bi bi-award"></i></div>
+              <div>
+                <div style="font-weight:600; font-size:.88rem;">AI & ML Certification</div>
+                <div style="font-size:.78rem; color:var(--txt2);">PanTech Solutions</div>
+              </div>
+            </div>
+          </div>
+          <hr style="border-color:var(--border); margin:22px 0;">
+          <h5 style="font-size:.95rem; font-weight:700; margin-bottom:16px;">Soft Skills</h5>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="pill">Decision Making</span>
+            <span class="pill">Problem Solving</span>
+            <span class="pill">Communication</span>
+            <span class="pill">Interpersonal</span>
+            <span class="pill">Presentation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="resume">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7 text-center fade-up mb-5">
+        <p class="section-label">Resume</p>
+        <h2 class="section-title">My Curriculum Vitae</h2>
+        <div class="divider mx-auto"></div>
+        <p class="section-sub mx-auto">Download or preview my resume to learn more about my professional background, skills, and achievements.</p>
+      </div>
+    </div>
+    <div class="row justify-content-center gy-4">
+      <div class="col-md-5 fade-up">
+        <div class="resume-card">
+          <div class="resume-icon"><i class="bi bi-eye"></i></div>
+          <h4 style="font-size:1.1rem; font-weight:700; margin-bottom:8px;">View Online</h4>
+          <p style="font-size:.88rem; color:var(--txt2); margin-bottom:0;">Preview my resume directly in your browser without downloading.</p>
+          <div class="resume-btn-group">
+            <a href="assets/Jayannth Resume.pdf" class="btn-primary-custom" target="_blank">
+              <i class="bi bi-eye"></i> View Resume
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 fade-up">
+        <div class="resume-card">
+          <div class="resume-icon"><i class="bi bi-download"></i></div>
+          <h4 style="font-size:1.1rem; font-weight:700; margin-bottom:8px;">Download PDF</h4>
+          <p style="font-size:.88rem; color:var(--txt2); margin-bottom:0;">Get a copy of my resume as a PDF file to read offline or share.</p>
+          <div class="resume-btn-group">
+            <a href="assets/Jayannth Resume.pdf" class="btn-outline-custom" download="Jayannth_Resume.pdf">
+              <i class="bi bi-file-earmark-pdf"></i> Download PDF
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="row mb-5 fade-up">
+      <div class="col-lg-6">
+        <p class="section-label">Contact</p>
+        <h2 class="section-title">Let's work together</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Have a project in mind or just want to say hi? I'd love to hear from you.</p>
+      </div>
+    </div>
+    <div class="row gy-5">
+      <div class="col-lg-5 fade-up">
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><i class="bi bi-envelope"></i></div>
+          <div>
+            <div class="contact-info-label">Email</div>
+            <div class="contact-info-val">jayannth16@gmail.com</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><i class="bi bi-telephone"></i></div>
+          <div>
+            <div class="contact-info-label">Phone</div>
+            <div class="contact-info-val">+91 93460 24008</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><i class="bi bi-geo-alt"></i></div>
+          <div>
+            <div class="contact-info-label">Location</div>
+            <div class="contact-info-val">Nandalur, Annamayya Dist., Andhra Pradesh</div>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/Jayannth-Paamuru" class="social-link" title="GitHub" target="_blank"><i class="bi bi-github"></i></a>
+          <a href="https://www.linkedin.com/in/paamuru-jayannth" class="social-link" title="LinkedIn" target="_blank"><i class="bi bi-linkedin"></i></a>
+          <a href="mailto:jayannth16@gmail.com" class="social-link" title="Email"><i class="bi bi-envelope"></i></a>
+          <a href="tel:+919346024008" class="social-link" title="Phone"><i class="bi bi-telephone"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-7 fade-up">
+        <div class="contact-form-card">
+          <div id="formSuccess" class="alert d-none" style="background:color-mix(in srgb,#22c55e 12%,transparent); border:1px solid color-mix(in srgb,#22c55e 25%,transparent); color:#166534; border-radius:10px; padding:14px 18px; font-size:.88rem; margin-bottom:20px;">
+            <i class="bi bi-check-circle me-2"></i> Thanks for reaching out! I'll get back to you soon.
+          </div>
+          <div class="row gy-3">
+            <div class="col-md-6">
+              <label class="form-label">Full Name *</label>
+              <input type="text" class="form-control" id="fname" placeholder="Your full name">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Email Address *</label>
+              <input type="email" class="form-control" id="femail" placeholder="your@email.com">
+            </div>
+            <div class="col-12">
+              <label class="form-label">Subject</label>
+              <input type="text" class="form-control" id="fsubject" placeholder="Project inquiry, collaboration, etc.">
+            </div>
+            <div class="col-12">
+              <label class="form-label">Message *</label>
+              <textarea class="form-control" id="fmessage" rows="5" placeholder="Tell me about your project or idea..."></textarea>
+            </div>
+            <div class="col-12">
+              <button type="button" class="btn-primary-custom w-100 justify-content-center" id="sendBtn" onclick="handleFormSubmit()">
+                <i class="bi bi-send"></i> Send Message
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Designed & Built by <span>Paamuru Jayannth</span> &mdash; &copy; 2025. All rights reserved.</p>
+  </div>
+</footer>
+
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="bi bi-arrow-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // ── Theme Toggle ──────────────────────────────────────────
+  const html = document.documentElement;
+  const themeIcon = document.getElementById('themeIcon');
+  let dark = true; // default dark
+
+  // set correct icon on load
+  themeIcon.className = 'bi bi-sun-fill';
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    dark = !dark;
+    html.setAttribute('data-theme', dark ? 'dark' : 'light');
+    themeIcon.className = dark ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
+  });
+
+  // ── Active nav link ───────────────────────────────────────
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id);
+        });
+      }
+    });
+  }, { threshold: .35 });
+  sections.forEach(s => observer.observe(s));
+
+  // ── Scroll top button ─────────────────────────────────────
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // ── Fade-up animation ─────────────────────────────────────
+  const fuObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: .1 });
+  document.querySelectorAll('.fade-up').forEach(el => fuObs.observe(el));
+
+  // ── Skill bar animation ───────────────────────────────────
+  const barObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const fill = e.target.querySelector('.skill-bar-fill');
+        if (fill) fill.style.width = fill.dataset.width + '%';
+      }
+    });
+  }, { threshold: .3 });
+  document.querySelectorAll('.skill-card').forEach(el => barObs.observe(el));
+
+  // ── Contact form ──────────────────────────────────────────
+  function handleFormSubmit() {
+    const name = document.getElementById('fname').value.trim();
+    const email = document.getElementById('femail').value.trim();
+    const msg = document.getElementById('fmessage').value.trim();
+    if (!name || !email || !msg) {
+      alert('Please fill in the required fields (Name, Email, Message).');
+      return;
+    }
+    const btn = document.getElementById('sendBtn');
+    btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Sending…';
+    btn.style.opacity = '.7';
+    btn.style.pointerEvents = 'none';
+    setTimeout(() => {
+      document.getElementById('formSuccess').classList.remove('d-none');
+      document.getElementById('fname').value = '';
+      document.getElementById('femail').value = '';
+      document.getElementById('fsubject').value = '';
+      document.getElementById('fmessage').value = '';
+      btn.innerHTML = '<i class="bi bi-send"></i> Send Message';
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'auto';
+    }, 1400);
+  }
+
+  // ── Smooth scroll for nav links ───────────────────────────
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+        // close mobile menu
+        const menu = document.getElementById('navMenu');
+        if (menu.classList.contains('show')) {
+          bootstrap.Collapse.getInstance(menu)?.hide();
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
